@@ -1,0 +1,1 @@
+get-aduser -filter * -prop * |?{($_.msRADIUSFramedIPAddress -ne $null)-and($_.enabled -eq $true)}|select name, @{Label="IpAddress"; Expression={$ip = "0x"+([convert]::Tostring($_.msRADIUSFramedIPAddress,16)).Substring(5,2); [convert]::ToString($ip,10)}}| sort ipaddress | ft

@@ -1,0 +1,11 @@
+On master DC 
+
+NET TIME /SETSNTP:time.windows.com
+NET STOP W32TIME
+NET START W32TIME
+W32TM /config /reliable:YES
+W32TM /resync /rediscover
+
+Next, run the following command on the other DCs.
+
+W32TM /resync /rediscover
